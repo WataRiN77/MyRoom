@@ -10,7 +10,7 @@ function OnMouseScroll()
 function OnMouseInside(type)
 {
     let img = document.getElementById(type)
-    img.src = "pasocon_colored.png";
+    img.src = "/MyRoom/pasocon_colored.png";
     btn.style.transform = 2;
 }
 
