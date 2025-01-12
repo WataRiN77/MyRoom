@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Room</title>
     <link rel="stylesheet" href="/MyRoom/default.css">
     <script src="/MyRoom/test.js"></script>
 
@@ -54,6 +54,11 @@
 <body>
 
     <script>
+
+        document.addEventListener('mouseenter', function()
+        {
+            rainVideo.play();
+        });
 
         let now = new Date();
         let hours = now.getHours();
@@ -967,8 +972,6 @@
         smallClick.volume = 0.3;
         rainVideo.volume = 0.3;
         sheepSound.volume = 0.1;
-
-        rainVideo.play();
 
         rainVideo.addEventListener('ended', () =>
         {
