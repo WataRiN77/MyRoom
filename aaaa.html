@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="default.css">
+    <script src="test.js"></script>
+
+    <style>
+        body
+        {
+            filter: invert(0%);
+            font-family: "康康体";
+            overflow: hidden;
+
+            transition: filter 1s ease;
+        }
+        .inverted
+        {
+            filter: invert(100%);
+        }
+
+        button
+        {
+            height: 175px;
+            width:  150px;
+
+            border: none;
+
+            background-color: rgba(193, 255, 152, 0);
+
+            transition: background-color 0.5s ease;
+
+            position: inherit;
+
+            pointer-events: all;
+        }
+        button.inactive
+        {
+            pointer-events: none;
+        }
+
+        .box
+        {
+            height: 200px;
+            width:  200px;
+            background-color: azure;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        let now = new Date();
+        let hours = now.getHours();
+        let dayMode = true;
+        const electronicPetOnload = true;
+
+        if(hours >= 6 && hours <= 18) dayMode = true;
+        else dayMode = false;
+
+        setInterval(UpdateTime, 1000);
+        setInterval(UpdateElectronicPet, 200);
+
+    </script>
+
+    <div id="BackGround_White">
+        <img src="rain.gif" style="position: absolute; left: 250px;">
+    </div>
+
+    <div class="homeimg">
+
+        <img src="home_day.png" id="home">
+
+        <script>
+
+            if(dayMode == false)
+            {
+                document.body.classList.toggle('inverted');
+                document.getElementById('home').src = "home_night.png";
+            }
+
+        </script>
+
+    </div>
+
+    <div class="textboximg" id="textbox">
+
+        <button type="button" id="BackspaceBtn" style="position: absolute; left: 1327px; top: 147px; height: 70px; width: 70px; z-index: 65536;">
+
+        </button>
+
+        <button type="button" id="PreviousBtn" style="position: absolute; left: 377px; top: 147px; height: 70px; width: 70px; z-index: 65566;">
+
+        </button>
+
+        <button type="button" id="gamebtn" style="position: absolute; left: 510px; top: 250px; height: 125px; width: 110px; z-index: 65536;">
+
+        </button>
+
+        <button type="button" id="animationbtn" style="position: absolute; left: 770px; top: 250px; height: 125px; width: 120px; z-index: 65536;">
+
+        </button>
+
+        <button type="button" id="portfolio" style="position: absolute; left: 510px; top: 250px; height: 125px; width: 110px; z-index: 65536;">
+
+            <div class="floatbox" id="portfoliofb">
+                <span style="position: absolute; font-size: 28px; height: 90px; width: 180px; left: 0px; top: 7px; font-family: '康康体';">我的作品</span>
+            </div>
+
+        </button>
+
+        <button type="button" id="Bilibili" style="position: absolute; left: 770px; top: 280px; height: 90px; width: 120px; z-index: 65536;">
+
+            <div class="floatbox" id="bilibilifb">
+                <span style="position: absolute; font-size: 28px; height: 90px; width: 180px; left: 0px; top: 7px; font-family: '康康体';">寻获概率：75%</span>
+            </div>
+
+        </button>
+
+        <button type="button" id="Mailbox" style="position: absolute; left: 1030px; top: 280px; height: 90px; width: 120px; z-index: 65536;">
+
+            <div class="floatbox" id="mailboxfb">
+                <span style="position: absolute; font-size: 28px; height: 90px; width: 180px; left: 0px; top: 7px; font-family: '康康体';">寻获概率：25%</span>
+            </div>
+
+            <div class="idbox" id="mailboxid">
+                <span style="position: absolute; font-size: 28px; height: 90px; width: 180px; left: 0px; top: 7px; font-family: '康康体'; pointer-events: none;">WataRiN@163.com</span>
+            </div>
+
+        </button>
+
+        <button type="button" id="X" style="position: absolute; left: 500px; top: 570px; height: 120px; width: 123px; z-index: 65536;">
+
+            <div class="floatbox" id="Xfb">
+                <span style="position: absolute; font-size: 28px; height: 90px; width: 180px; left: 0px; top: 7px; font-family: '康康体';">寻获概率：??%</span>
+            </div>
+
+        </button>
+
+        <button type="button" id="QQ" style="position: absolute; left: 773px; top: 555px; height: 150px; width: 100px; z-index: 65536;">
+
+            <div class="floatbox" id="QQfb">
+                <span style="position: absolute; font-size: 28px; height: 90px; width: 180px; left: 0px; top: 7px; font-family: '康康体';">寻获概率：95%</span>
+            </div>
+
+        </button>
+
+        <button type="button" id="Wechat" style="position: absolute; left: 1030px; top: 555px; height: 150px; width: 150px; z-index: 65536;">
+
+            <div class="floatbox" id="Wechatfb">
+                <span style="position: absolute; font-size: 28px; height: 90px; width: 180px; left: 0px; top: 7px; font-family: '康康体';">寻获概率：50%</span>
+            </div>
+
+        </button>
+
+        <div id="showgamepage" style="display: none;">
+
+            <button type="button" id="pagedown" style="position: absolute; left: 930px; top: 856px; height: 30px; width: 40px; z-index: 65536;">
+
+                <svg width="40px" height="30px">
+                    <polygon points="0,30 0,0 40,15" fill="black" />
+                </svg>
+
+            </button>
+
+            <button type="button" id="pageup" style="position: absolute; left: 780px; top: 856px; height: 30px; width: 40px; z-index: 65536;">
+
+                <svg width="40px" height="30px">
+                    <polygon points="40,30 0,15 40,0" fill="black" />
+                </svg>
+
+            </button>
+
+            <span style="position: absolute; font-size: 36px; left: 850px; top: 855px; display: block;" id="gamepage">
+            1 / 3
+            </span>
+
+        </div>
+
+        <span style="position: absolute; font-size: 36px; left: 510px; top: 420px;" id="portf">
+            作品集
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 530px; top: 420px; display: none;" id="game">
+            游戏
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 797px; top: 420px; display: none;" id="animation">
+            动画
+        </span>
+
+        <span class="clipboard" id="cb">
+            404 NOT FOUND!
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 775px; top: 520px; display: none;" id="tbc">
+            To be continued...
+        </span>
+
+
+        <script>
+
+            // btn = button
+            // fb = floatbox
+            // bs = backspace
+            // pv = previous
+            //
+            let btn_bs        = document.getElementById('BackspaceBtn');
+            let btn_pv        = document.getElementById('PreviousBtn');
+
+            let btn_portfolio = document.getElementById('portfolio')
+            let btn_bilibili  = document.getElementById('Bilibili');
+            let btn_mailbox   = document.getElementById('Mailbox');
+            let btn_x         = document.getElementById('X');
+            let btn_qq        = document.getElementById('QQ');
+            let btn_wechat    = document.getElementById('Wechat');
+
+            let btn_game      = document.getElementById('gamebtn');
+            let btn_animation = document.getElementById('animationbtn');
+
+            let btn_pageDown  = document.getElementById('pagedown');
+            let btn_pageUp    = document.getElementById('pageup');
+
+            let fb_portfolio  = document.getElementById('portfoliofb');
+            let fb_bilibili   = document.getElementById('bilibilifb')
+            let fb_mailbox    = document.getElementById('mailboxfb')
+            let fb_x          = document.getElementById('Xfb');
+            let fb_qq         = document.getElementById('QQfb');
+            let fb_wechat     = document.getElementById('Wechatfb');
+
+            let mailboxid     = document.getElementById('mailboxid');
+
+            let nekoBlenderP  = document.getElementById('nekoblender');
+            let digletthouseP = document.getElementById('diglettshouse');
+
+            let gamePageBox   = document.getElementById('showgamepage');
+            let tbc_text      = document.getElementById('tbc');
+
+            let qqQR          = document.getElementById('qqQRcode');
+
+            let clipboardText = document.getElementById('cb');
+            const myMailBoxID = "WataRiN@163.com";
+
+            let clicked = false;
+            let showQRCode = false;
+            let showQQQRCode = false;
+
+            let page = 0;
+            let gamePage = 1;
+            DisableButtonByID('PreviousBtn');
+
+            btn_bs.addEventListener('click', () => 
+            {
+                EnableButtonByID('Bilibili', 'Mailbox', 'X', 'Wechat', 'QQ', 'portfolio');
+                DisableButtonByID('PreviousBtn', 'pageup', 'pagedown');
+
+                document.getElementById('icon').src = 'icons.png';
+                document.getElementById('textbox_box').src = 'textbox.png';
+
+                document.getElementById('portf').style.display = 'block';
+                document.getElementById('game').style.display = 'none';
+                document.getElementById('animation').style.display = 'none';
+
+                document.getElementById('nekoblender').style.display = 'none';
+                document.getElementById('nekoblenderDescription').style.display = 'none';
+
+                document.getElementById('diglettshouse').style.display = 'none';
+                document.getElementById('diglettshouseDescription').style.display = 'none';
+
+                gamePageBox.style.display = 'none';
+
+                TextboxFlowsOut();
+
+                bigClick.play();
+            });
+
+            btn_pv.addEventListener('click', () => 
+            {
+                if(page == 1)
+                {
+                    EnableButtonByID('Bilibili', 'Mailbox', 'X', 'Wechat', 'QQ', 'portfolio');
+                    DisableButtonByID('PreviousBtn');
+
+                    document.getElementById('icon').src = 'icons.png';
+                    document.getElementById('textbox_box').src = 'textbox.png';
+
+                    document.getElementById('portf').style.display = 'block';
+                    document.getElementById('game').style.display = 'none';
+                    document.getElementById('animation').style.display = 'none';
+
+                    gamePageBox.style.display = 'none';
+
+                    page = 0;
+                }
+
+                else if(page == 2)
+                {
+                    page = 1;
+
+                    document.getElementById('icon').src = 'portfolio.png';
+                    document.getElementById('textbox_box').src = 'textbox_portf.png';
+                    DisableButtonByID('Bilibili', 'Mailbox', 'X', 'Wechat', 'QQ', 'portfolio');
+                    EnableButtonByID('PreviousBtn', 'gamebtn', 'animationbtn');
+
+                    document.getElementById('portf').style.display = 'none';
+                    document.getElementById('game').style.display = 'block';
+                    document.getElementById('animation').style.display = 'block';
+
+                    document.getElementById('nekoblender').style.display = 'none';
+                    document.getElementById('nekoblenderDescription').style.display = 'none';
+
+                    document.getElementById('diglettshouse').style.display = 'none';
+                    document.getElementById('diglettshouseDescription').style.display = 'none';
+
+                    gamePageBox.style.display = 'none';
+
+                    tbc_text.style.display = 'none';
+                }
+
+                smallClick.play();
+            });
+
+            btn_portfolio.addEventListener('mouseenter', function()
+            {
+                fb_portfolio.classList.toggle('active');
+            });
+
+            btn_portfolio.addEventListener('mouseleave', function()
+            {
+                fb_portfolio.classList.toggle('active');
+            });
+
+            btn_portfolio.addEventListener('click', function(event)
+            {
+                let portftext = document.getElementById('portf');
+                console.log(event.target);
+
+                if(!clicked)
+                {
+                    portftext.style.backgroundColor = 'black';
+                    portftext.style.color = 'white';
+                    clicked = true;
+                }
+
+                document.addEventListener('click', function(event)
+                {
+                    if(clicked == true && (!btn_portfolio.contains(event.target)))
+                    {
+                        portftext.style.backgroundColor = 'white';
+                        portftext.style.color = 'black';
+                        clicked = false;
+                    }
+                });  
+
+            });
+
+            btn_portfolio.addEventListener('dblclick', function()
+            {
+                page = 1;
+
+                console.log("dblclick");
+                document.getElementById('icon').src = 'portfolio.png';
+                document.getElementById('textbox_box').src = 'textbox_portf.png';
+                mailboxid.style.display = 'none';
+                DisableButtonByID('Bilibili', 'Mailbox', 'X', 'Wechat', 'QQ', 'portfolio');
+                EnableButtonByID('PreviousBtn', 'gamebtn', 'animationbtn');
+
+                document.getElementById('portf').style.display = 'none';
+                document.getElementById('game').style.display = 'block';
+                document.getElementById('animation').style.display = 'block';
+
+                document.getElementById('nekoblender').style.display = 'none';
+                document.getElementById('nekoblenderDescription').style.display = 'none';
+
+                smallClick.play();
+            });
+
+            btn_game.addEventListener('click', () =>
+            {
+                let gametext = document.getElementById('game');
+                let clicked_game = false;
+
+                if(!clicked_game)
+                {
+                    gametext.style.backgroundColor = 'black';
+                    gametext.style.color = 'white';
+                    clicked_game = true;
+                }
+
+                document.addEventListener('click', function(event)
+                {
+                    if(clicked_game == true && (!btn_game.contains(event.target)))
+                    {
+                        gametext.style.backgroundColor = 'white';
+                        gametext.style.color = 'black';
+                        clicked_game = false;
+                    }
+                });
+            });
+
+            btn_game.addEventListener('dblclick', function()
+            {
+                page = 2;
+                gamePage = 1;
+
+                gamePageBox.style.display = 'block';
+
+                document.getElementById('icon').src = 'none';
+                document.getElementById('textbox_box').src = 'textbox_portf.png';
+
+                DisableButtonByID('gamebtn', 'animationbtn');
+                EnableButtonByID('pageup', 'pagedown');
+
+                document.getElementById('game').style.display = 'none';
+                document.getElementById('animation').style.display = 'none';
+
+                document.getElementById('nekoblender').style.display = 'block';
+                document.getElementById('nekoblenderDescription').style.display = 'block';
+
+                if(dayMode)
+                {
+                    document.getElementById('nekoblender').src = 'NekoBlender.png';
+                    document.getElementById('nekoblender').style.top  = '-30px';
+                    document.getElementById('nekoblender').style.left = '-50px';
+                }
+
+                else
+                {
+                    document.getElementById('nekoblender').src = 'nekoblender_night.png';
+                    document.getElementById('nekoblender').style.top  = '-530px';
+                    document.getElementById('nekoblender').style.left = '-250px';
+                }
+                
+                gamePageBox.style.display = 'block';
+                document.getElementById('gamepage').textContent = "1 / 3";
+
+                smallClick.play();
+
+            });
+
+            btn_pageDown.addEventListener('click', () =>
+            {
+                if(gamePage + 1 <= 3) smallClick.play();
+
+                gamePage = gamePage + 1 >= 3 ? 3 : gamePage + 1;
+
+                if(gamePage == 2)
+                {
+                    document.getElementById('nekoblender').style.display = 'none';
+                    document.getElementById('nekoblenderDescription').style.display = 'none';
+
+                    document.getElementById('gamepage').textContent = "2 / 3";
+
+                    document.getElementById('diglettshouse').style.display = 'block';
+                    document.getElementById('diglettshouseDescription').style.display = 'block';
+
+                    if(dayMode)
+                    {
+                        document.getElementById('diglettshouse').src = 'DiglettsHouse.jpg';
+                        document.getElementById('diglettshouse').style.top  = '325px';
+                        document.getElementById('diglettshouse').style.left = '570px';
+                        document.getElementById('diglettshouse').style.transform = 'scale(1.8)';
+                    }
+
+                    else
+                    {
+                        document.getElementById('diglettshouse').src = 'diglettshouse_night.png';
+                        document.getElementById('diglettshouse').style.top  = '-530px';
+                        document.getElementById('diglettshouse').style.left = '-250px';
+                        document.getElementById('diglettshouse').style.transform = 'scale(0.3)';
+                    }
+                }
+
+                else if(gamePage == 3)
+                {
+                    document.getElementById('nekoblender').style.display = 'none';
+                    document.getElementById('nekoblenderDescription').style.display = 'none';
+
+                    document.getElementById('gamepage').textContent = "3 / 3";
+
+                    document.getElementById('diglettshouse').style.display = 'none';
+                    document.getElementById('diglettshouseDescription').style.display = 'none';
+
+                    tbc_text.style.display = 'block';
+                }
+
+            });
+
+            btn_pageUp.addEventListener('click', () =>
+            {
+                if(gamePage - 1 >= 1) smallClick.play();
+
+                gamePage = gamePage - 1 <= 1 ? 1 : gamePage - 1;
+
+                if(gamePage == 1)
+                {
+                    document.getElementById('nekoblender').style.display = 'block';
+                    document.getElementById('nekoblenderDescription').style.display = 'block';
+
+                    if(dayMode)
+                    {
+                        document.getElementById('nekoblender').src = 'NekoBlender.png';
+                        document.getElementById('nekoblender').style.top  = '-30px';
+                        document.getElementById('nekoblender').style.left = '-50px';
+                    }
+
+                    else
+                    {
+                        document.getElementById('nekoblender').src = 'nekoblender_night.png';
+                        document.getElementById('nekoblender').style.top  = '-530px';
+                        document.getElementById('nekoblender').style.left = '-250px';
+                    }
+
+                    document.getElementById('gamepage').textContent = "1 / 3";
+
+                    document.getElementById('diglettshouse').style.display = 'none';
+                    document.getElementById('diglettshouseDescription').style.display = 'none';
+                }
+
+                else if(gamePage == 2)
+                {
+                    document.getElementById('nekoblender').style.display = 'none';
+                    document.getElementById('nekoblenderDescription').style.display = 'none';
+
+                    document.getElementById('gamepage').textContent = "2 / 3";
+
+                    document.getElementById('diglettshouse').style.display = 'block';
+                    document.getElementById('diglettshouseDescription').style.display = 'block';
+
+                    if(dayMode)
+                    {
+                        document.getElementById('diglettshouse').src = 'DiglettsHouse.jpg';
+                        document.getElementById('diglettshouse').style.top  = '325px';
+                        document.getElementById('diglettshouse').style.left = '570px';
+                        document.getElementById('diglettshouse').style.transform = 'scale(1.8)';
+                    }
+
+                    else
+                    {
+                        document.getElementById('diglettshouse').src = 'diglettshouse_night.png';
+                        document.getElementById('diglettshouse').style.top  = '-530px';
+                        document.getElementById('diglettshouse').style.left = '-250px';
+                        document.getElementById('diglettshouse').style.transform = 'scale(0.3)';
+                    }
+
+                    tbc_text.style.display = 'none';
+                }
+
+            });
+        
+            btn_bilibili.addEventListener('mouseenter', function()
+            {
+                fb_bilibili.classList.toggle('active');
+            });
+
+            btn_bilibili.addEventListener('mouseleave', function()
+            {
+                fb_bilibili.classList.toggle('active');
+            });
+
+            btn_bilibili.addEventListener('click', function()
+            {
+                window.open('https://space.bilibili.com/281383150?spm_id_from=333.1007.0.0', '_blank');
+            });
+
+            btn_mailbox.addEventListener('mouseenter', function()
+            {
+                fb_mailbox.classList.toggle('active');
+            });
+
+            btn_mailbox.addEventListener('mouseleave', function()
+            {
+                fb_mailbox.classList.toggle('active');
+            });
+
+            btn_mailbox.addEventListener('click', function()
+            {
+                //mailboxid.classList.toggle('active');
+
+                //if(dayMode) clipboardText.style.color = 'black';
+                //else        clipboardText.style.color = 'white';
+
+                OpenMailClient('WataRiN@163.com', '请更改标题', '请输入内容');
+
+                //CopyContent(myMailBoxID);
+                //ClipboardFadeIn('cb', 300);
+                //TimeFadeOut('cb', 3000, 300);
+            });
+
+            btn_x.addEventListener('mouseenter', function()
+            {
+                fb_x.classList.toggle('active');
+            });
+
+            btn_x.addEventListener('mouseleave', function()
+            {
+                fb_x.classList.toggle('active');
+            });
+
+            btn_x.addEventListener('click', function()
+            {
+                ClipboardFadeIn('cb', 300);
+                TimeFadeOut('cb', 3000, 300);
+            });
+
+            btn_qq.addEventListener('mouseenter', function()
+            {
+                if(!showQQQRCode) fb_qq.classList.toggle('active');
+            });
+
+            btn_qq.addEventListener('mouseleave', function()
+            {
+                if(!showQQQRCode) fb_qq.classList.toggle('active');
+            });
+
+            btn_qq.addEventListener('click', function()
+            {
+                fb_qq.classList.toggle('active');
+
+                if(!showQQQRCode)
+                {
+                    showQQQRCode = true;
+                    document.getElementById('qqQRcode').style.display = 'block';
+                }
+
+                else
+                {
+                    showQQQRCode = false;
+                    document.getElementById('qqQRcode').style.display = 'none';
+                }
+            });
+
+            btn_wechat.addEventListener('mouseenter', function()
+            {
+                if(!showQRCode) fb_wechat.classList.toggle('active');
+            });
+
+            btn_wechat.addEventListener('mouseleave', function()
+            {
+                if(!showQRCode) fb_wechat.classList.toggle('active');
+            });
+
+            btn_wechat.addEventListener('click', function()
+            {
+                fb_wechat.classList.toggle('active');
+
+                if(!showQRCode)
+                {
+                    showQRCode = true;
+                    document.getElementById('wechatQRcode').style.display = 'block';
+                }
+
+                else
+                {
+                    showQRCode = false;
+                    document.getElementById('wechatQRcode').style.display = 'none';
+                }
+                
+            });
+
+            //nekoBlenderP.addEventListener('click', () =>
+            //{
+            //    window.open('https://watarin.itch.io/neko-and-the-blender', '_blank');
+            //});
+
+
+        </script>
+
+
+        <img src="textbox.png" id="textbox_box">
+        <img src="icons.png" style="position: absolute; top: 100px; left: 100px; transform: scale(1.1);" id="icon">
+        <img src="Wechat.PNG" style="position: absolute; top: 155px; left: 640px; transform: scale(0.25); display: none;" id="wechatQRcode">
+        <img src="QQ.PNG" style="position: absolute; top: 155px; left: 380px; transform: scale(0.275); display: none;" id="qqQRcode">
+
+        <div style="display: none;" id="nekoblenderDescription">
+
+            <a href="https://watarin.itch.io/neko-and-the-blender" target="_blank">
+            
+                <img src="NekoBlender.png" style="position: absolute; top: -30px; left: -50px; transform: scale(0.3); border-radius: 15%; display: none; pointer-events: all; z-index: 65537;" id="nekoblender">
+            
+            </a>
+
+            <div style="position: absolute; font-size: 36px; top: 290px; left: 950px;">猫猫榨汁机</div>
+
+            <div style="position: absolute; font-size: 36px; top: 340px; left: 955px;">Neko and the Blender</div>
+
+            <div style="position: absolute; font-size: 36px; top: 395px; left: 950px;">类型：解谜</div>
+
+            <div style="position: absolute; font-size: 36px; top: 445px; left: 955px;">GameJam IV: Juicy</div>
+
+            <div style="position: absolute; font-size: 36px; top: 595px; left: 495px;">你需要将猫猫指定的物品利用榨汁机“榨”出来。</div>
+
+            <div style="position: absolute; font-size: 36px; top: 645px; left: 495px;">至于榨汁机的配方……</div>
+
+            <div style="position: absolute; font-size: 36px; top: 695px; left: 495px;">我不知道喵！我只是一只小猫咪喵！我都不管喵！</div>
+        
+        </div>
+
+        <div style="display: none;" id="diglettshouseDescription">
+
+            <a href="https://melatonin1.itch.io/digletts-house" target="_blank">
+            
+                <img src="DiglettsHouse.jpg" style="position: absolute; top: 325px; left: 570px; transform: scale(1.8); border-radius: 15%; display: none; pointer-events: all; z-index: 65537;" id="diglettshouse">
+            
+            </a>
+
+            <div style="position: absolute; font-size: 36px; top: 290px; left: 950px;">分手鼠房</div>
+
+            <div style="position: absolute; font-size: 36px; top: 340px; left: 955px;">Diglett's House</div>
+
+            <div style="position: absolute; font-size: 36px; top: 395px; left: 950px;">类型：双人合作，欢乐，打地鼠</div>
+
+            <div style="position: absolute; font-size: 36px; top: 445px; left: 955px;">GameJam III: Tribute to</div>
+
+            <div style="position: absolute; font-size: 36px; top: 490px; left: 955px;">Masterpiece</div>
+
+            <div style="position: absolute; font-size: 36px; top: 595px; left: 495px;">你和你的朋友将扮演两只猫咪,</div>
+
+            <div style="position: absolute; font-size: 36px; top: 645px; left: 495px;">将房内的地鼠们尽数消灭。</div>
+
+            <div style="position: absolute; font-size: 36px; top: 695px; left: 495px;">但注意，真正的敌人往往是你身边的队友。</div>
+
+        
+        </div>
+        
+
+        <div style="position: absolute; font-size: 48px; left: 1300px; top: 920px;" id="time"></div>
+
+    </div>
+
+    <div class="bioboximg" id="biobox_day">
+
+        <button type="button" id="BackspaceBtnOnBio" style="position: absolute; left: 1327px; top: 147px; height: 70px; width: 70px; z-index: 65536;">
+
+        </button>
+
+        <span style="position: absolute;; font-size: 72px; left: 650px; top: 150px;">
+            个人信息
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 270px;">
+            姓名：查俊晖
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 320px;">
+            年龄：21（2003.7.16）
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 370px;">
+            职业：学生
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 420px;">
+            位于：上海
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 470px;">
+            MBTI：INFP，仅供参考
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 520px; width: 700px;">
+            上海科技大学 创意与艺术学院 工业设计专业 娱乐设计方向在读
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 600px; width: 700px;">
+            游戏开发 / 爱好者，游戏玩家
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 650px; width: 700px;">
+            梦想是成为独立游戏制作人 / 策划，以自己的世界观构建一个故事，并用自己的方式将其叙述。
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 765px; width: 700px;">
+            在此基础上，如果有人能够乐在其中那就再好不过。
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 845px; width: 700px;">
+            寻求合作伙伴。如有兴趣，请通过桌子上的电脑联系我。
+        </span>
+
+        <span style="position: absolute; font-size: 48px; left: 1200px; top: 270px; width: 700px;">
+            座右铭---->
+        </span>
+
+        <script>
+            let btn_bsb = document.getElementById('BackspaceBtnOnBio');
+            btn_bsb.addEventListener('click', () =>
+            {
+                bigClick.play();
+                BioboxFlowsOut(dayMode);
+            });
+
+        </script>
+
+
+        <img src="textbox.png">
+
+    </div>
+
+    <div class="bioboximg" id="biobox_night">
+
+        <button type="button" id="BackspaceBtnNOnBio" style="position: absolute; left: 1327px; top: 147px; height: 70px; width: 70px; z-index: 65536;">
+
+        </button>
+
+        <span style="position: absolute;; font-size: 72px; left: 650px; top: 150px;">
+            个人信息
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 270px;">
+            你好，我是WataRiN。
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 320px;">
+            这id很难念吧，但要说的话叫我小航就可以了。
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 370px;">
+            怎么叫都无所谓啦。我没意见。
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 420px;">
+            关于电脑里面那个寻获概率……
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 470px;">
+            在白天的时候，概率要降低10个百分点左右呢。
+        </span>
+
+        <span style="position: absolute; font-size: 36px; left: 650px; top: 520px;">
+            在晚上的话，寻获概率更高哦。
+        </span>
+
+        <img src="sheep.gif" style="height: 20%; width: 30%; position: absolute; left: 1000px; top: 650px;" id="es">
+
+        <img src="textbox.png">
+
+    </div>
+
+    <div class="bedimg">
+
+        <button type="button" style="left: 1330px; top: 30px; position: fixed; height: 180px; width: 300px; z-index: 2;" id="bedbtn">
+
+        </button>
+
+        <script>
+            let btn_bed = document.getElementById('bedbtn');
+            let bbx  = document.getElementById('biobox_day');
+            let bbxn = document.getElementById('biobox_night');
+
+            btn_bed.addEventListener('mouseenter', function()
+            {
+                if(dayMode) document.getElementById('home').src = "slogan.png";
+                else        document.getElementById('home').src = "slogan_night.png";
+            });
+
+            btn_bed.addEventListener('mouseleave', function()
+            {
+                if(dayMode) document.getElementById('home').src = "home_day.png";
+                else        document.getElementById('home').src = "home_night.png";
+            });
+
+            btn_bed.addEventListener('click', () =>
+            {
+                BioboxFlowsIn(dayMode);
+                bigClick.play();
+            });
+
+        </script>
+
+    </div>
+
+    <div class="sunimg">
+
+        <button type="button" style="left: 930px; top: 80px; position: fixed; height: 170px; width: 170px; z-index: 16;" id="sunbtn">
+
+        </button>
+
+        <script>
+            let btn_sun = document.getElementById('sunbtn');
+
+            btn_sun.addEventListener('mouseenter', function()
+            {
+                if(dayMode) document.getElementById('home').src = "sun.png";
+                else        document.getElementById('home').src = "moon.png";
+            });
+
+            btn_sun.addEventListener('mouseleave', function()
+            {
+                if(dayMode) document.getElementById('home').src = "home_day.png";
+                else        document.getElementById('home').src = "home_night.png";
+            });
+
+            btn_sun.addEventListener('click', function()
+            {
+                console.log("click");
+                document.body.classList.toggle('inverted');
+
+                if(dayMode)
+                {
+                    document.getElementById('home').src = "home_night.png";
+                    dayMode = false;
+                }
+
+                else
+                {
+                    document.getElementById('home').src = "home_day.png";
+                    dayMode = true;
+                }
+                
+            });
+
+        </script>
+
+    </div>
+
+    <div class="defaultimg" style="position: fixed; z-index: 7;">
+
+        <button type="button" style="left: 460px; top: 580px; height: 160px; width: 260px; position: fixed; z-index: 7;" id="pasoconbtn">
+
+        </button>
+
+        <script>
+            let btn = document.getElementById('pasoconbtn');
+            let tbx = document.getElementById('textbox')
+
+            btn.addEventListener('mouseenter', function()
+            {
+                if(dayMode) document.getElementById('home').src = "pasocon.png";
+                else        document.getElementById('home').src = "pasocon_night.png";
+            });
+
+            btn.addEventListener('mouseleave', function()
+            {
+                if(dayMode) document.getElementById('home').src = "home_day.png";
+                else        document.getElementById('home').src = "home_night.png";
+            });
+
+            btn.addEventListener('click', () => 
+            {
+                bigClick.play();
+                TextboxFlowsIn();
+            });
+
+        </script>
+
+    </div>
+
+    <audio src="/SoundFX/bigClick.wav" id="bigClick"></audio>
+    <audio src="/SoundFX/smallClick.wav" id="smallClick"></audio>
+    <audio src="/SoundFX/SheepSound.mp3" id="sheepsound"></audio>
+    <video src="/SoundFX/Rain.mp4" id="rain"></video>
+
+    <script>
+
+        let smallClick = document.getElementById('smallClick');
+        let bigClick   = document.getElementById('bigClick');
+        let rainVideo  = document.getElementById('rain');
+        let sheepSound = document.getElementById('sheepsound');
+
+        bigClick.volume = 0.3;
+        smallClick.volume = 0.3;
+        rainVideo.volume = 0.3;
+        sheepSound.volume = 0.1;
+
+        rainVideo.play();
+
+        rainVideo.addEventListener('ended', () =>
+        {
+            rainVideo.load();
+            rainVideo.play();
+        });
+
+    </script>
+    
+</body>
+
+</html>
