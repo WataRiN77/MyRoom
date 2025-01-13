@@ -109,7 +109,7 @@ function TextboxFlowsOut()
             }
             else
             {
-                finishFlag_1 = true;
+                finishFlag = true;
             }
         }
         
@@ -475,6 +475,7 @@ function OpenMailClient(email, subject, body)
 }
 
 let currentState = 'sleep';
+let newState = 'sleep';
 
 let esTimer = 0;
 let activated = false;
@@ -612,8 +613,6 @@ function ElectricSheepRandomMove()
 
     let currentX = startX;
     let currentY = startY;
-    
-    let timer = null;
 
     let moveSpeedx = 1;
     let moveSpeedy = 1;
@@ -627,7 +626,7 @@ function ElectricSheepRandomMove()
     if(targetX < currentX) document.getElementById('es').style.transform = "scaleX( 1)";
     else                   document.getElementById('es').style.transform = "scaleX(-1)";
 
-    clearInterval(timer);
+    clearInterval(moveTimer);
 
     moveTimer = setInterval(function()
     {
@@ -636,17 +635,12 @@ function ElectricSheepRandomMove()
             if(Math.abs(currentX - targetX) >= 10 && Math.abs(currentY - targetY) >= 10)
             {
                 moveSpeedx = (targetX - currentX) / moveSpeedDivider;
-                //moveSpeedx = Math.abs(moveSpeedx) < 1 ? Syn(moveSpeedx) * moveSpeedx : Syn(moveSpeedx) * 1;
-
                 moveSpeedy = (targetY - currentY) / moveSpeedDivider;
-                //moveSpeedy = Math.abs(moveSpeedy) < 1 ? Syn(moveSpeedy) * moveSpeedy : Syn(moveSpeedy) * 1;
 
                 currentX += moveSpeedx;
                 currentY += moveSpeedy;
                 document.getElementById('es').style.left = currentX + "px";
                 document.getElementById('es').style.top  = currentY + "px";
-                //console.log(current);
-                //console.log(tbx.style.top);
             }
             else
             {
@@ -657,15 +651,12 @@ function ElectricSheepRandomMove()
         }
         
     }, 1);
-
 }
 
 function Syn(x)
 {
     return x >= 0 ? 1 : -1;
 }
-
-let newState = 'sleep';
 
 function LiterallyDoNothing()
 {
